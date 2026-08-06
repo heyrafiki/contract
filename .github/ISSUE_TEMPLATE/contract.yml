@@ -1,0 +1,28 @@
+name: Contract issue
+description: Report an incorrect or incomplete API contract.
+title: "Contract: "
+body:
+  - type: markdown
+    attributes:
+      value: Do not include personal, health, payment or credential data.
+  - type: input
+    id: operation
+    attributes:
+      label: Operation
+      description: The method and path, such as POST /bookings.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is incorrect, missing or ambiguous?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected contract
+    validations:
+      required: true
+

@@ -1,0 +1,19 @@
+{
+  "name": "@heyrafiki/openapi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The versioned REST contract for the Heyrafiki API.",
+  "type": "module",
+  "scripts": {
+    "lint": "redocly lint openapi.yaml",
+    "test": "npm run lint && node scripts/check-contract.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@redocly/cli": "2.41.2",
+    "yaml": "2.8.3"
+  }
+}
+

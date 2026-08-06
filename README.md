@@ -1,2 +1,38 @@
-# openapi
+# Heyrafiki OpenAPI
+
 The versioned REST contract for the Heyrafiki API.
+
+The specification covers Practitioner discovery, Bookings, Sessions, Benefits,
+Claims, remittance and Webhooks. Examples use synthetic data.
+
+## Use the contract
+
+- Read the [API documentation](https://docs.heyrafiki.space).
+- Download [`openapi.yaml`](./openapi.yaml).
+- Generate a client with any OpenAPI 3.1-compatible tool.
+
+The API base URL is `https://api.heyrafiki.space/v1`.
+
+## Validate a change
+
+Requires Node.js 22 or newer.
+
+```bash
+npm ci
+npm test
+```
+
+The checks validate the OpenAPI document, operation identifiers, authentication,
+error coverage and the public-information boundary.
+
+## Compatibility
+
+Additive fields and operations do not change the major version. Breaking changes
+use a new major API version and a documented migration period. See the
+[versioning policy](https://docs.heyrafiki.space/versioning).
+
+## Security
+
+Report vulnerabilities through the
+[Heyrafiki security policy](https://github.com/heyrafiki/.github/blob/main/SECURITY.md).
+Never include personal, health or payment data in an issue or example.
