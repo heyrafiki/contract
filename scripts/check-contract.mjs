@@ -42,4 +42,3 @@ const forbidden = [
 for (const pattern of forbidden) assert.doesNotMatch(source, pattern);
 
 console.log(`OpenAPI contract passed: ${operations.length} operations.`);
-

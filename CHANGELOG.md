@@ -6,4 +6,3 @@
   Claims, remittance and Webhooks.
 - Added request identifiers, idempotency requirements and the shared error
   envelope.
-

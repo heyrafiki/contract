@@ -11,4 +11,3 @@ State whether the change is additive, breaking or a correction.
 - [ ] `npm test`
 - [ ] Examples contain synthetic data only
 - [ ] Documentation and SDK impact is described
-

@@ -28,4 +28,3 @@ jobs:
         run: npm ci
       - name: Validate contract
         run: npm test
-

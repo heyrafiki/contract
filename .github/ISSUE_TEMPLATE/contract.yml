@@ -25,4 +25,3 @@ body:
       label: Expected contract
     validations:
       required: true
-
