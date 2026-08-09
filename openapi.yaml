@@ -8,8 +8,8 @@ info:
     url: https://heyrafiki.space
     email: developers@heyrafiki.space
   license:
-    name: All rights reserved
-    identifier: LicenseRef-Heyrafiki-Proprietary
+    name: Apache 2.0
+    identifier: Apache-2.0
 servers:
   - url: https://api.heyrafiki.space/v1
 security:
