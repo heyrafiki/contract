@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "claim_id": "clm_synthetic_assurance_001",
+  "currency": "KES",
+  "minor_unit": 2,
+  "policy": {
+    "reference": "policy:synthetic:mental-health:2026",
+    "version": "2026-07-01"
+  },
+  "service_period": {
+    "starts_at": "2026-07-08T09:00:00.000Z",
+    "ends_at": "2026-07-08T09:50:00.000Z"
+  },
+  "valuation_at": "2026-07-31T23:59:59.999Z",
+  "events": [
+    {
+      "sequence": 1,
+      "event_id": "evt_care_delivered_001",
+      "event_type": "care_delivered",
+      "effective_at": "2026-07-08T09:50:00.000Z",
+      "recorded_at": "2026-07-08T10:03:00.000Z",
+      "source_authority": "provider",
+      "previous_status": null,
+      "next_status": "claimable",
+      "evidence_references": ["care-attestation:synthetic:001"]
+    },
+    {
+      "sequence": 2,
+      "event_id": "evt_claim_submitted_001",
+      "event_type": "claim_submitted",
+      "effective_at": "2026-07-09T07:12:00.000Z",
+      "recorded_at": "2026-07-09T07:12:00.000Z",
+      "source_authority": "provider",
+      "previous_status": "draft",
+      "next_status": "submitted",
+      "amounts": { "billed": 600000 },
+      "evidence_references": ["eligibility:synthetic:001", "care-attestation:synthetic:001"]
+    },
+    {
+      "sequence": 3,
+      "event_id": "evt_information_requested_001",
+      "event_type": "information_requested",
+      "effective_at": "2026-07-10T11:00:00.000Z",
+      "recorded_at": "2026-07-10T11:00:03.000Z",
+      "source_authority": "payer",
+      "previous_status": "submitted",
+      "next_status": "queried",
+      "reason_codes": ["supporting_invoice_required"],
+      "evidence_references": ["payer-request:synthetic:001"]
+    },
+    {
+      "sequence": 4,
+      "event_id": "evt_evidence_received_001",
+      "event_type": "evidence_received",
+      "effective_at": "2026-07-11T08:35:00.000Z",
+      "recorded_at": "2026-07-11T08:35:04.000Z",
+      "source_authority": "provider",
+      "previous_status": "queried",
+      "next_status": "submitted",
+      "evidence_references": ["invoice:synthetic:001"]
+    },
+    {
+      "sequence": 5,
+      "event_id": "evt_claim_adjudicated_001",
+      "event_type": "claim_adjudicated",
+      "effective_at": "2026-07-14T14:20:00.000Z",
+      "recorded_at": "2026-07-14T14:20:02.000Z",
+      "source_authority": "payer",
+      "previous_status": "submitted",
+      "next_status": "partially_approved",
+      "reason_codes": ["contract_rate"],
+      "amounts": {
+        "billed": 600000,
+        "payer_liability": 450000,
+        "patient_responsibility": 50000,
+        "adjustment": 100000
+      },
+      "evidence_references": ["adjudication:synthetic:001", "policy:synthetic:mental-health:2026@2026-07-01"]
+    },
+    {
+      "sequence": 6,
+      "event_id": "evt_remittance_received_001",
+      "event_type": "remittance_received",
+      "effective_at": "2026-07-21T06:00:00.000Z",
+      "recorded_at": "2026-07-21T06:01:12.000Z",
+      "source_authority": "payer",
+      "previous_status": "partially_approved",
+      "next_status": "partially_approved",
+      "amounts": { "remitted": 450000 },
+      "evidence_references": ["remittance:synthetic:001"]
+    },
+    {
+      "sequence": 7,
+      "event_id": "evt_settlement_observed_001",
+      "event_type": "settlement_observed",
+      "effective_at": "2026-07-23T08:10:00.000Z",
+      "recorded_at": "2026-07-23T08:11:40.000Z",
+      "source_authority": "payment_rail",
+      "previous_status": "partially_approved",
+      "next_status": "partially_approved",
+      "amounts": { "settled": 350000 },
+      "evidence_references": ["payment-observation:synthetic:001", "ledger-transaction:synthetic:001"]
+    }
+  ],
+  "valuation": {
+    "source_event_sequence": 7,
+    "claim_status": "partially_approved",
+    "financial_status": "partially_settled",
+    "billed": 600000,
+    "payer_liability": 450000,
+    "patient_responsibility": 50000,
+    "adjustment": 100000,
+    "remitted": 450000,
+    "settled": 350000,
+    "outstanding": 100000
+  }
+}

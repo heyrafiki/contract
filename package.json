@@ -8,7 +8,12 @@
     "openapi.yaml",
     "README.md",
     "FINANCIAL_CONTROLS.md",
+    "ASSURANCE_GRAPH.md",
+    "assurance/assurance-graph.schema.json",
+    "assurance/assurance-graph.json",
+    "assurance/claim-valuation-timeline.schema.json",
     "fixtures/financial-controls.json",
+    "fixtures/claim-valuation-timeline.json",
     "CHANGELOG.md",
     "LICENSE"
   ],
@@ -22,14 +27,17 @@
   },
   "scripts": {
     "lint": "redocly lint openapi.yaml",
-    "test": "npm run lint && node scripts/check-contract.mjs && npm run test:financial-controls",
-    "test:financial-controls": "node scripts/check-financial-controls.mjs"
+    "test": "npm run lint && node scripts/check-contract.mjs && npm run test:financial-controls && npm run test:assurance",
+    "test:financial-controls": "node scripts/check-financial-controls.mjs && node scripts/check-claim-valuation-timeline.mjs",
+    "test:assurance": "node scripts/check-assurance-graph.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "devDependencies": {
     "@redocly/cli": "2.44.2",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1",
     "yaml": "2.9.0"
   }
 }

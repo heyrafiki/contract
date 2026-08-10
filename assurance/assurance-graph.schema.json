@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.heyrafiki.space/assurance/graph/1.0.0",
+  "title": "Heyrafiki Assurance Graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract", "sources", "evidence", "controls", "capabilities"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "version"],
+      "properties": {
+        "path": { "type": "string", "const": "openapi.yaml" },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/source" },
+      "minItems": 1
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence" },
+      "minItems": 1
+    },
+    "controls": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/control" },
+      "minItems": 1
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/capability" },
+      "minItems": 1
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]+$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "kind", "jurisdiction", "source_url"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "name": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["regulator", "government", "professional_board", "integration_boundary", "platform_authority"] },
+        "jurisdiction": { "type": "string", "minLength": 1 },
+        "source_url": { "type": "string", "format": "uri" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "artifact", "verification"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "artifact": { "type": "string", "minLength": 1 },
+        "verification": { "type": "string", "minLength": 1 }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement", "owner", "source_ids", "evidence_ids"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "statement": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "source_ids": { "type": "array", "items": { "$ref": "#/$defs/identifier" }, "minItems": 1, "uniqueItems": true },
+        "evidence_ids": { "type": "array", "items": { "$ref": "#/$defs/identifier" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "owner", "access", "operations", "control_ids"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": { "type": "string", "minLength": 1 },
+        "owner": { "type": "string", "minLength": 1 },
+        "access": { "enum": ["public", "sandbox_key", "scoped_organization_grant"] },
+        "operations": { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1, "uniqueItems": true },
+        "control_ids": { "type": "array", "items": { "$ref": "#/$defs/identifier" }, "minItems": 1, "uniqueItems": true }
+      }
+    }
+  }
+}

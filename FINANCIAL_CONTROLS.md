@@ -50,5 +50,17 @@ The check independently recomputes line balances, Claim totals, the derived
 decision, remittance allocation totals and settlement status. The main API
 contract has additional authorization, idempotency, provenance and audit rules.
 
+## Reproduce an as-of Claim view
+
+[`fixtures/claim-valuation-timeline.json`](./fixtures/claim-valuation-timeline.json)
+is a synthetic, bitemporal Claim history. Each event records when the fact became
+effective and when the system recorded it. The executable check rejects future
+knowledge, non-gapless sequences, unbalanced adjudication and an outstanding
+amount that cannot be reproduced from payer liability and observed settlement.
+
+This evidence supports development analysis for reported Claims. It does not
+produce an actuarial reserve opinion or replace an insurer's IBNR, solvency,
+capital or reinsurance models.
+
 Read the complete [insurance integration guide](https://docs.heyrafiki.space/insurance/integration-guide)
 and [financial control model](https://docs.heyrafiki.space/insurance/financial-controls).
