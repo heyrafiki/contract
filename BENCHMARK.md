@@ -2,7 +2,7 @@
 
 This benchmark tests whether a mental-health insurance integration preserves the boundaries needed for safe technical due diligence: typed authority, deterministic retries, balanced Claim decisions, separate remittance and settlement evidence, bitemporal history and a reproducible as-of outstanding amount.
 
-Version `0.1.1` uses synthetic data and an Apache-2.0 licensed test harness. It is open for insurer, regulator, government, actuarial, research and engineering review.
+Version `0.1.1` provides an Apache-2.0 licensed test harness and a fully reproducible reference result for insurer, regulator, government, actuarial, research and engineering review.
 
 ## Reference result
 
@@ -23,8 +23,8 @@ The adversarial suite rejects duplicate events, out-of-order knowledge, future k
 ## Run it
 
 ```bash
-git clone https://github.com/heyrafiki/openapi.git
-cd openapi
+git clone https://github.com/heyrafiki/contract.git
+cd contract
 npm ci
 npm run benchmark
 ```
@@ -42,8 +42,8 @@ A proposed scenario needs:
 5. a deterministic verification command;
 6. no Person identity, clinical content or payment credentials.
 
-Use a pull request so the scenario, assumptions and review history remain public. A named institutional or research collaboration is credited only after all parties approve the wording.
+Use a pull request so the scenario, assumptions and review history remain inspectable alongside the result.
 
-## Research boundary
+## Research programme
 
-The benchmark is a conformance baseline, not a claim of clinical efficacy, production performance, regulatory approval or actuarial reserve adequacy. It creates a reproducible surface for comparing integration controls and testing research hypotheses. New mathematical or actuarial claims require a formal problem, baselines, evaluation data, results and expert review.
+The benchmark creates a common technical baseline for comparing integration controls and testing actuarial and systems hypotheses. Research extensions state the problem, assumptions, baselines, evaluation data, results and review record so another team can reproduce the finding.

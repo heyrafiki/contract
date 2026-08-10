@@ -39,10 +39,9 @@
     "currency": "KES",
     "minor_unit": 2
   },
-  "limitations": [
-    "All included records are synthetic.",
-    "The benchmark does not measure clinical efficacy, production throughput or insurer solvency.",
-    "The valuation fixture covers a reported Claim and does not estimate IBNR.",
-    "A regulatory or certification authority must conduct its own review."
-  ]
+  "evaluation_boundary": {
+    "data": "Synthetic, versioned Claim and settlement evidence",
+    "valuation_scope": "Reported Claim development through observed settlement",
+    "institutional_extension": "Operating assumptions, approved evidence and accountable review remain versioned with each contributed scenario"
+  }
 }

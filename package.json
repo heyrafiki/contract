@@ -1,5 +1,5 @@
 {
-  "name": "@heyrafiki/openapi",
+  "name": "@heyrafiki/contract",
   "version": "0.1.0-beta.1",
   "description": "The versioned REST contract for the Heyrafiki API.",
   "type": "module",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heyrafiki/openapi.git"
+    "url": "git+https://github.com/heyrafiki/contract.git"
   },
   "homepage": "https://docs.heyrafiki.space",
   "publishConfig": {
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@redocly/cli": "2.44.2",
-    "ajv": "8.17.1",
+    "ajv": "8.20.0",
     "ajv-formats": "3.0.1",
     "yaml": "2.9.0"
   }
