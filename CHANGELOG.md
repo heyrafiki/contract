@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added a Claim valuation operation that reproduces state, liability, remittance,
+  settlement and outstanding amount at an explicit knowledge cutoff.
 - Added a machine-readable Assurance Graph that maps every OpenAPI operation to
   accountable capabilities, control owners, governing sources and executable
   evidence.

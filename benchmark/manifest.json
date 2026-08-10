@@ -1,12 +1,12 @@
 {
   "id": "heyrafiki-open-mental-health-insurance-assurance",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "published_on": "2026-08-10",
   "license": "Apache-2.0",
   "scope": "Synthetic conformance evidence for mental-health Care, insurance operations and financial control boundaries.",
   "contract": {
     "openapi_version": "1.0.0",
-    "operation_count": 30,
+    "operation_count": 31,
     "capability_count": 10,
     "control_count": 9
   },

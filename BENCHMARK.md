@@ -2,13 +2,13 @@
 
 This benchmark tests whether a mental-health insurance integration preserves the boundaries needed for safe technical due diligence: typed authority, deterministic retries, balanced Claim decisions, separate remittance and settlement evidence, bitemporal history and a reproducible as-of outstanding amount.
 
-Version `0.1.0` uses synthetic data and an Apache-2.0 licensed test harness. It is open for insurer, regulator, government, actuarial, research and engineering review.
+Version `0.1.1` uses synthetic data and an Apache-2.0 licensed test harness. It is open for insurer, regulator, government, actuarial, research and engineering review.
 
 ## Reference result
 
 | Measure | Result |
 | --- | ---: |
-| Public OpenAPI operations mapped | 30 |
+| Public OpenAPI operations mapped | 31 |
 | Accountable capabilities | 10 |
 | Named controls | 9 |
 | Benchmark suites | 4 |
