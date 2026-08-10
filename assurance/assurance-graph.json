@@ -1,0 +1,227 @@
+{
+  "schema_version": "1.0.0",
+  "contract": {
+    "path": "openapi.yaml",
+    "version": "1.0.0"
+  },
+  "sources": [
+    {
+      "id": "heyrafiki.domain",
+      "name": "Heyrafiki typed capability authority",
+      "kind": "platform_authority",
+      "jurisdiction": "global",
+      "source_url": "https://github.com/heyrafiki/openapi"
+    },
+    {
+      "id": "ke.ira.claims",
+      "name": "Insurance Regulatory Authority Claims Management Guidelines",
+      "kind": "regulator",
+      "jurisdiction": "Kenya",
+      "source_url": "https://www.ira.go.ke/images/docs/Guidelines1_on_Claims_Management.pdf"
+    },
+    {
+      "id": "ke.ira.market_conduct",
+      "name": "Insurance Regulatory Authority Market Conduct Guidelines",
+      "kind": "regulator",
+      "jurisdiction": "Kenya",
+      "source_url": "https://ira.go.ke/assets/file/Guidelines_on_Market_Conduct_for_Insurers.pdf"
+    },
+    {
+      "id": "ke.dha.certification",
+      "name": "Digital Health Agency certification framework",
+      "kind": "regulator",
+      "jurisdiction": "Kenya",
+      "source_url": "https://certification.dha.go.ke/framework"
+    },
+    {
+      "id": "ke.dha.hie",
+      "name": "Digital Health Agency Health Information Exchange",
+      "kind": "government",
+      "jurisdiction": "Kenya",
+      "source_url": "https://hie-docs.dha.go.ke/introduction"
+    },
+    {
+      "id": "ke.cpb.licensing",
+      "name": "Counsellors and Psychologists Board registration and licensing",
+      "kind": "professional_board",
+      "jurisdiction": "Kenya",
+      "source_url": "https://cpb.health.go.ke/registration-services"
+    },
+    {
+      "id": "ke.gov.gavaconnect",
+      "name": "GavaConnect government API boundary",
+      "kind": "integration_boundary",
+      "jurisdiction": "Kenya",
+      "source_url": "https://www.developer.go.ke/"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evidence.contract",
+      "artifact": "openapi.yaml",
+      "verification": "npm run lint && node scripts/check-contract.mjs"
+    },
+    {
+      "id": "evidence.financial_invariants",
+      "artifact": "fixtures/financial-controls.json",
+      "verification": "node scripts/check-financial-controls.mjs"
+    },
+    {
+      "id": "evidence.valuation_timeline",
+      "artifact": "fixtures/claim-valuation-timeline.json",
+      "verification": "node scripts/check-claim-valuation-timeline.mjs"
+    },
+    {
+      "id": "evidence.assurance_graph",
+      "artifact": "assurance/assurance-graph.json",
+      "verification": "node scripts/check-assurance-graph.mjs"
+    }
+  ],
+  "controls": [
+    {
+      "id": "control.scoped_authority",
+      "statement": "Every operation declares a typed contract and requires the scope appropriate to the actor and Organization context.",
+      "owner": "Platform Security",
+      "source_ids": ["heyrafiki.domain", "ke.dha.certification"],
+      "evidence_ids": ["evidence.contract", "evidence.assurance_graph"]
+    },
+    {
+      "id": "control.deterministic_retry",
+      "statement": "Retryable mutations use idempotency and stable failure behavior so a duplicate request cannot create a second business fact.",
+      "owner": "Platform Engineering",
+      "source_ids": ["heyrafiki.domain", "ke.ira.claims"],
+      "evidence_ids": ["evidence.contract", "evidence.financial_invariants"]
+    },
+    {
+      "id": "control.credential_authority",
+      "statement": "Practitioner identity, category, licence observation, source, and freshness remain distinct from a Platform eligibility decision.",
+      "owner": "Clinical Operations",
+      "source_ids": ["ke.cpb.licensing", "ke.dha.hie"],
+      "evidence_ids": ["evidence.contract", "evidence.assurance_graph"]
+    },
+    {
+      "id": "control.consent_and_purpose",
+      "statement": "Care and insurance capabilities preserve purpose, Consent, minimum-necessary evidence, and source authority at the exchange boundary.",
+      "owner": "Privacy and Clinical Safety",
+      "source_ids": ["ke.dha.hie", "ke.dha.certification"],
+      "evidence_ids": ["evidence.contract", "evidence.assurance_graph"]
+    },
+    {
+      "id": "control.claim_accountability",
+      "statement": "Eligibility, authorization, Claim, adjudication, remittance, and settlement are separate facts with policy version, reason, actor, and time evidence.",
+      "owner": "Insurance Platform",
+      "source_ids": ["ke.ira.claims", "ke.ira.market_conduct"],
+      "evidence_ids": ["evidence.contract", "evidence.financial_invariants", "evidence.valuation_timeline"]
+    },
+    {
+      "id": "control.financial_identity",
+      "statement": "Money uses integer minor units; Claim lines, adjudication, remittance, settlement, and outstanding liability reconcile without conflating advice with movement.",
+      "owner": "Finance Platform",
+      "source_ids": ["heyrafiki.domain", "ke.ira.claims"],
+      "evidence_ids": ["evidence.financial_invariants", "evidence.valuation_timeline"]
+    },
+    {
+      "id": "control.bitemporal_evidence",
+      "statement": "Claim evidence records when a fact became effective and when it was recorded so an as-of financial view never uses future knowledge.",
+      "owner": "Insurance Platform and Finance",
+      "source_ids": ["heyrafiki.domain", "ke.ira.claims"],
+      "evidence_ids": ["evidence.valuation_timeline"]
+    },
+    {
+      "id": "control.interoperability_boundary",
+      "statement": "External identifiers, terminology, and government interfaces remain versioned adapter evidence rather than uncontrolled domain authority.",
+      "owner": "Institutional Integrations",
+      "source_ids": ["ke.dha.hie", "ke.gov.gavaconnect"],
+      "evidence_ids": ["evidence.contract", "evidence.assurance_graph"]
+    },
+    {
+      "id": "control.webhook_integrity",
+      "statement": "Asynchronous delivery uses an explicit event contract, signed requests, retry semantics, and replay-safe receiving guidance.",
+      "owner": "Platform Reliability",
+      "source_ids": ["heyrafiki.domain", "ke.dha.certification"],
+      "evidence_ids": ["evidence.contract", "evidence.assurance_graph"]
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "capability.system",
+      "label": "API discovery",
+      "owner": "Developer Platform",
+      "access": "public",
+      "operations": ["getApi"],
+      "control_ids": ["control.scoped_authority"]
+    },
+    {
+      "id": "capability.practitioners",
+      "label": "Practitioner directory and availability",
+      "owner": "Network Trust",
+      "access": "sandbox_key",
+      "operations": ["listPractitioners", "getPractitioner", "getPractitionerAvailability"],
+      "control_ids": ["control.scoped_authority", "control.credential_authority", "control.interoperability_boundary"]
+    },
+    {
+      "id": "capability.bookings",
+      "label": "Care booking",
+      "owner": "Care Platform",
+      "access": "sandbox_key",
+      "operations": ["listBookings", "createBooking", "getBooking"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.consent_and_purpose"]
+    },
+    {
+      "id": "capability.sessions",
+      "label": "Care delivery evidence",
+      "owner": "Care Platform",
+      "access": "sandbox_key",
+      "operations": ["listSessions", "getSession"],
+      "control_ids": ["control.scoped_authority", "control.consent_and_purpose"]
+    },
+    {
+      "id": "capability.eligibility",
+      "label": "Eligibility observation",
+      "owner": "Insurance Platform",
+      "access": "sandbox_key",
+      "operations": ["createEligibilityCheck", "getEligibilityCheck"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.consent_and_purpose", "control.interoperability_boundary"]
+    },
+    {
+      "id": "capability.coverage",
+      "label": "Coverage observation and batch exchange",
+      "owner": "Institutional Integrations",
+      "access": "scoped_organization_grant",
+      "operations": ["recordCoverageObservation", "recordCoverageBatch"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.interoperability_boundary"]
+    },
+    {
+      "id": "capability.preauthorization",
+      "label": "Pre-authorization",
+      "owner": "Insurance Platform",
+      "access": "scoped_organization_grant",
+      "operations": ["createPreauthorization", "getPreauthorization", "decidePreauthorization"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.consent_and_purpose", "control.claim_accountability"]
+    },
+    {
+      "id": "capability.claims",
+      "label": "Claim submission and adjudication",
+      "owner": "Insurance Platform",
+      "access": "scoped_organization_grant",
+      "operations": ["listClaims", "createClaim", "getClaim", "createClaimInformationRequest", "submitClaimEvidence", "adjudicateClaim"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.consent_and_purpose", "control.claim_accountability", "control.financial_identity", "control.bitemporal_evidence", "control.interoperability_boundary"]
+    },
+    {
+      "id": "capability.remittances",
+      "label": "Remittance and reconciliation",
+      "owner": "Finance Platform",
+      "access": "scoped_organization_grant",
+      "operations": ["listRemittances", "createRemittance", "getRemittance"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.claim_accountability", "control.financial_identity", "control.bitemporal_evidence"]
+    },
+    {
+      "id": "capability.webhooks",
+      "label": "Webhook delivery",
+      "owner": "Platform Reliability",
+      "access": "sandbox_key",
+      "operations": ["listWebhookEndpoints", "createWebhookEndpoint", "getWebhookEndpoint", "disableWebhookEndpoint", "testWebhookEndpoint"],
+      "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.webhook_integrity"]
+    }
+  ]
+}
