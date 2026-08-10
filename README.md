@@ -1,8 +1,8 @@
-# Heyrafiki OpenAPI
+# Heyrafiki Contract
 
 The versioned REST contract for the Heyrafiki API.
 
-> Beta: the contract is available for sandbox integration and may receive additive changes before the first stable release.
+The contract is available for Sandbox integration. Version 1 accepts additive changes under the published compatibility policy.
 
 The specification covers Practitioner discovery, Bookings, Sessions, Benefits,
 Claims, remittance and Webhooks. Examples use synthetic data.
@@ -15,7 +15,7 @@ Claims, remittance and Webhooks. Examples use synthetic data.
 - Inspect the machine-readable [Assurance Graph](./ASSURANCE_GRAPH.md).
 - Run the [Open Mental Health Insurance Assurance Benchmark](./BENCHMARK.md).
 - Generate a client with any OpenAPI 3.1-compatible tool.
-- Install the contract from npm with `npm install @heyrafiki/openapi@beta`.
+- Clone the contract or use `openapi.yaml` directly with an OpenAPI 3.1-compatible tool.
 
 The API base URL is `https://api.heyrafiki.space/v1`.
 

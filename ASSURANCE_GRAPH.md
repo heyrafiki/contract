@@ -2,7 +2,7 @@
 
 The Assurance Graph connects each public API operation to an accountable capability, control owner, governing source and executable evidence artifact. It gives insurer, government, regulator, security and engineering reviewers one machine-readable path from a public claim to the contract and test that support it.
 
-The graph describes Heyrafiki's verified contract. It does not claim regulatory approval, certification or partnership. Access remains separate: API discovery is public; sandbox operations use a sandbox key; institutional capabilities use a scoped Organization grant.
+The graph describes Heyrafiki's verified contract. API discovery is public, Sandbox operations use a Sandbox key, and institutional capabilities use scoped Organization authority.
 
 ## What is connected
 
