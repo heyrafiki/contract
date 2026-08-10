@@ -7,6 +7,8 @@
   evidence.
 - Added a bitemporal Claim valuation fixture and conformance check for
   reproducible as-of liability, remittance, settlement and outstanding amounts.
+- Published the versioned Open Mental Health Insurance Assurance Benchmark with
+  five executable adversarial mutations and a machine-readable result manifest.
 
 ## 0.1.0-beta.1 - 2026-08-06
 

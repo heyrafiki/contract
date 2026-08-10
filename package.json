@@ -9,6 +9,8 @@
     "README.md",
     "FINANCIAL_CONTROLS.md",
     "ASSURANCE_GRAPH.md",
+    "BENCHMARK.md",
+    "benchmark/manifest.json",
     "assurance/assurance-graph.schema.json",
     "assurance/assurance-graph.json",
     "assurance/claim-valuation-timeline.schema.json",
@@ -27,9 +29,10 @@
   },
   "scripts": {
     "lint": "redocly lint openapi.yaml",
-    "test": "npm run lint && node scripts/check-contract.mjs && npm run test:financial-controls && npm run test:assurance",
+    "test": "npm run lint && node scripts/check-contract.mjs && npm run test:financial-controls && npm run test:assurance && npm run benchmark",
     "test:financial-controls": "node scripts/check-financial-controls.mjs && node scripts/check-claim-valuation-timeline.mjs",
-    "test:assurance": "node scripts/check-assurance-graph.mjs"
+    "test:assurance": "node scripts/check-assurance-graph.mjs",
+    "benchmark": "node scripts/run-assurance-benchmark.mjs"
   },
   "engines": {
     "node": ">=22"

@@ -1,0 +1,48 @@
+{
+  "id": "heyrafiki-open-mental-health-insurance-assurance",
+  "version": "0.1.0",
+  "published_on": "2026-08-10",
+  "license": "Apache-2.0",
+  "scope": "Synthetic conformance evidence for mental-health Care, insurance operations and financial control boundaries.",
+  "contract": {
+    "openapi_version": "1.0.0",
+    "operation_count": 30,
+    "capability_count": 10,
+    "control_count": 9
+  },
+  "suites": [
+    {
+      "id": "contract-coverage",
+      "asserts": ["valid OpenAPI 3.1", "unique operation IDs", "authentication and error coverage", "one Assurance Graph capability per operation"]
+    },
+    {
+      "id": "financial-identity",
+      "asserts": ["integer minor units", "balanced Claim lines", "remittance allocation identity", "settlement kept separate from advice"]
+    },
+    {
+      "id": "bitemporal-valuation",
+      "asserts": ["gapless event order", "effective and recorded time", "no future knowledge", "reproducible outstanding liability"]
+    },
+    {
+      "id": "adversarial-mutations",
+      "asserts": ["duplicate event rejected", "out-of-order knowledge rejected", "future knowledge rejected", "unbalanced adjudication rejected", "over-settlement rejected"]
+    }
+  ],
+  "reference_result": {
+    "status": "pass",
+    "positive_scenarios": 4,
+    "adversarial_scenarios_rejected": 5,
+    "claim_events": 7,
+    "payer_liability": 450000,
+    "observed_settlement": 350000,
+    "outstanding": 100000,
+    "currency": "KES",
+    "minor_unit": 2
+  },
+  "limitations": [
+    "All included records are synthetic.",
+    "The benchmark does not measure clinical efficacy, production throughput or insurer solvency.",
+    "The valuation fixture covers a reported Claim and does not estimate IBNR.",
+    "A regulatory or certification authority must conduct its own review."
+  ]
+}
