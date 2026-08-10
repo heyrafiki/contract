@@ -11,6 +11,7 @@ Claims, remittance and Webhooks. Examples use synthetic data.
 
 - Read the [API documentation](https://docs.heyrafiki.space).
 - Download [`openapi.yaml`](./openapi.yaml).
+- Review the [insurance financial controls](./FINANCIAL_CONTROLS.md).
 - Generate a client with any OpenAPI 3.1-compatible tool.
 - Install the contract from npm with `npm install @heyrafiki/openapi@beta`.
 
@@ -26,7 +27,8 @@ npm test
 ```
 
 The checks validate the OpenAPI document, operation identifiers, authentication,
-error coverage and the public-information boundary.
+error coverage, public-information boundary and synthetic insurance amount
+invariants.
 
 ## Compatibility
 

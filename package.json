@@ -7,6 +7,8 @@
   "files": [
     "openapi.yaml",
     "README.md",
+    "FINANCIAL_CONTROLS.md",
+    "fixtures/financial-controls.json",
     "CHANGELOG.md",
     "LICENSE"
   ],
@@ -20,7 +22,8 @@
   },
   "scripts": {
     "lint": "redocly lint openapi.yaml",
-    "test": "npm run lint && node scripts/check-contract.mjs"
+    "test": "npm run lint && node scripts/check-contract.mjs && npm run test:financial-controls",
+    "test:financial-controls": "node scripts/check-financial-controls.mjs"
   },
   "engines": {
     "node": ">=22"

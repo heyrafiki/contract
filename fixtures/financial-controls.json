@@ -1,0 +1,38 @@
+{
+  "claim": {
+    "currency": "KES",
+    "decision": "partially_approved",
+    "lines": [
+      {
+        "line_number": 1,
+        "amount": {
+          "billed": 600000,
+          "allowed": 500000,
+          "payer": 450000,
+          "patient_responsibility": 50000,
+          "adjustment": 100000
+        }
+      }
+    ],
+    "amount": {
+      "billed": 600000,
+      "payer": 450000,
+      "patient_responsibility": 50000,
+      "adjustment": 100000
+    }
+  },
+  "remittance": {
+    "currency": "KES",
+    "total_paid": 200000,
+    "allocations": [
+      {
+        "claim_id": "clm_synthetic_financial_control",
+        "paid_amount": 200000
+      }
+    ]
+  },
+  "settlement_observation": {
+    "currency": "KES",
+    "received_amount": 200000
+  }
+}
