@@ -204,7 +204,7 @@
       "label": "Claim submission and adjudication",
       "owner": "Insurance Platform",
       "access": "scoped_organization_grant",
-      "operations": ["listClaims", "createClaim", "getClaim", "createClaimInformationRequest", "submitClaimEvidence", "adjudicateClaim"],
+      "operations": ["listClaims", "createClaim", "getClaim", "getClaimValuation", "createClaimInformationRequest", "submitClaimEvidence", "adjudicateClaim"],
       "control_ids": ["control.scoped_authority", "control.deterministic_retry", "control.consent_and_purpose", "control.claim_accountability", "control.financial_identity", "control.bitemporal_evidence", "control.interoperability_boundary"]
     },
     {
