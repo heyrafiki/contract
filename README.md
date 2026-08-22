@@ -2,16 +2,15 @@
 
 The versioned REST contract for the Heyrafiki API.
 
-## Where this fits
+## What this repository is for
 
-Heyrafiki is building the Intelligence and Infrastructure for Continuous Mental
-Healthcare. This repository is authoritative for the public REST shapes through
-which applications participate in governed Care, Benefits, Claims and
-remittance workflows.
+If you are connecting to Heyrafiki, this is the source for its public API. It
+defines the requests, responses and compatibility commitments that let an
+integration work consistently across Care, Benefits, Claims and remittance.
 
-The contract names resources, authorization, errors, idempotency and
-compatibility. It does not redefine clinical authority, payer adjudication or
-Consent. Those remain explicit system boundaries.
+It covers the technical details developers need: resources, authentication,
+errors and idempotency. Clinical and Claim decisions remain with the people and
+organizations responsible for them.
 
 The contract is available for Sandbox integration. Version 1 accepts additive changes under the published compatibility policy.
 
